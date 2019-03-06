@@ -12,18 +12,18 @@ catch (PDOException $e)
 }
 // Создание таблиц
 $pdoQuery = "CREATE TABLE IF NOT EXISTS `Usernames` ( `id` INT NOT NULL ,  `name` TINYTEXT,
-`surname` TINYTEXT, PRIMARY KEY (`id`)) ENGINE = InnoDB;";
+`surname` TINYTEXT, PRIMARY KEY (`id`)) ENGINE = InnoDB";
 
 $pdoResult = $pdo->query($pdoQuery);
 
 $pdoQuery = "CREATE TABLE IF NOT EXISTS `Dob` ( `dob` DATE NOT NULL , `usernames_id` INT NOT NULL ,
-             FOREIGN KEY (`usernames_id`) REFERENCES `task3`.`Usernames`(id)) ENGINE = InnoDB;";
+             FOREIGN KEY (`usernames_id`) REFERENCES `task3`.`Usernames`(id)) ENGINE = InnoDB";
 
 
    $pdoResult = $pdo->query($pdoQuery);
 
 $pdoQuery = "CREATE TABLE IF NOT EXISTS `Tel` ( `tel` TINYTEXT NOT NULL , `usernames_id` INT NOT NULL ,
-             FOREIGN KEY (`usernames_id`) REFERENCES `task3`.`Usernames`(id)) ENGINE = InnoDB;";
+             FOREIGN KEY (`usernames_id`) REFERENCES `task3`.`Usernames`(id)) ENGINE = InnoDB";
 
 $pdoResult = $pdo->query($pdoQuery);
 
@@ -99,7 +99,7 @@ for ($i=0;$i<count($arrTel);$i++) {
 //Объединение 3-х таблиц
 $pdoQuery = "SELECT `Usernames`.`name`, `Usernames`.`surname`, `Dob`.`dob`, `Tel`.`tel`
 FROM `Usernames` LEFT JOIN `Dob` ON `Usernames`.`id`=`Dob`.`usernames_id`
-LEFT JOIN `Tel` ON `Usernames`.`id`=`Tel`.`usernames_id`;";
+LEFT JOIN `Tel` ON `Usernames`.`id`=`Tel`.`usernames_id`";
 
 $pdoResult = $pdo->query($pdoQuery);
 
